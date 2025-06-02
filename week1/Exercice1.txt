@@ -1,1 +1,52 @@
-Permessions
+1. How is permission granted to delete a file?
+
+- To delete a file, the user needs **write permission on the directory** containing the file, not on the file itself.
+- Write permission on the directory allows adding, renaming, or deleting files within it.
+
+2. Create a file that your colleague can edit but not delete and another he can delete but not edit.
+
+- Steps and commands assuming your colleague belongs to the group `colleagues`:
+
+  a) Create the files:
+     ```
+     touch edit.txt delete.txt
+     ```
+
+  b) Change group ownership:
+     ```
+     chown :colleagues edita.txt delete.txt
+     ```
+
+  c) For the file **editable but not deletable**:
+     - Give group write permission on the file (allow editing):
+       ```
+       chmod g+rw edit.txt
+       ```
+     - Remove group write permission on the directory (deny deletion):
+       ```
+       chmod g-w .
+       ```
+
+  d) For the file **deletable but not editable**:
+     - Remove group write permission on the file (deny editing):
+       ```
+       chmod g-w delete.txt
+       ```
+     - Give group write permission on the directory (allow deletion):
+       ```
+       chmod g+w .
+       ```
+
+3. Does it make sense to be able to assign such rights?
+
+- It is possible but rarely practical because:
+  - If a user can delete files, they often can rename or move them, which is almost equivalent to deleting.
+  - Allowing deletion without edit can lead to loss of data without control.
+  - Allowing edit without deletion can cause  confusion.
+ 
+
+4. What are the practical consequences of this experience?
+
+- Careful management of directory and file permissions is required.
+- Users might unintentionally delete important files if given directory write access.
+
