@@ -1,1 +1,25 @@
-exo2
+
+ 1. All files under /etc whose names begin with "rc"
+echo "Files under /etc beginning with 'rc':"
+find /etc -type f -name "rc*"
+echo
+
+ 2. All regular files belonging to you, results in /tmp/findme, errors in /dev/null
+echo "Finding all regular files belonging to the current user, writing to /tmp/findme:"
+find / -type f -user "$USER" > /tmp/findme 2>/dev/null
+echo "Results saved in /tmp/findme"
+echo
+
+3. All subdirectories of /etc
+echo "Subdirectories of /etc:"
+find /etc -type d
+echo
+
+ 4. All regular files under your home directory not modified in the last 10 days
+echo "Files in home not modified in last 10 days:"
+find "$HOME" -type f -mtime +10
+echo
+
+ 5. The 10 largest files on your computer
+echo "10 largest files on the computer:"
+find / -type f -exec du -h {} + 2>/dev/null | sort -hr | head -n 10
