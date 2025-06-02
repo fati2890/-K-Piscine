@@ -14,7 +14,7 @@
 
   b) Change group ownership:
      ```
-     chown :colleagues edita.txt delete.txt
+     chown :colleagues edit.txt delete.txt
      ```
 
   c) For the file **editable but not deletable**:
