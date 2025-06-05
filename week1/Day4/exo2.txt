@@ -1,0 +1,49 @@
+Exercice 2 – Accès IMAP, Requête HTTP et Différences HTTP/1 vs HTTP/2
+
+1. Accès IMAP via OpenSSL
+
+Pour se connecter à un serveur IMAP sécurisé en utilisant la ligne de commande.
+- Commande utilisée : 
+    openssl s_client -connect imap.gmail.com:993 -crlf
+- Explication :
+    Cette commande ouvre une connexion TLS sécurisée vers le serveur IMAP de Gmail sur le port 993.
+    Une fois connecté, on peut envoyer des commandes IMAP manuelles, comme LOGIN pour s'authentifier,
+    SELECT pour choisir une boîte mail, FETCH pour récupérer des emails, etc.
+- Exemple de session :
+    tag LOGIN utilisateur motdepasse
+    tag SELECT INBOX
+    tag FETCH 1 BODY[TEXT]
+
+2. Envoi d’une requête HTTP via Telnet
+
+- Pour comprendre comment envoyer une requête HTTP "manuelle" sans navigateur.
+- Commande utilisée :
+    telnet google.com 80
+- Explication :
+    On ouvre une connexion TCP au serveur web sur le port HTTP 80.
+    Puis on tape une requête HTTP en clair, par exemple :
+        GET / HTTP/1.1
+        Host: google.com
+
+
+3. Interception d’une requête HTTP avec Netcat
+Pour capturer et analyser une requête HTTP envoyée par un navigateur.
+- Commande utilisée :
+    nc -l 8080
+- Explication :
+    Netcat écoute sur le port 8080. En ouvrant dans un navigateur l’URL http://localhost:8080, la requête HTTP est envoyée à Netcat.
+    On peut alors lire les entêtes HTTP comme User-Agent, Host, Accept, etc.
+
+4. Différences entre HTTP/1 et HTTP/2
+
+Voici une version condensée en un seul paragraphe :
+
+HTTP/1 est un protocole textuel où chaque connexion TCP ne peut gérer qu’une requête à la fois, 
+ce qui cause un blocage en tête de ligne et ralentit le chargement à cause des requêtes séquentielles
+et des entêtes répétitives. En revanche, HTTP/2 utilise un format binaire et permet le multiplexage, 
+c’est-à-dire plusieurs requêtes et réponses simultanées sur une seule connexion, avec en plus la compression 
+des entêtes et la priorisation des flux, rendant ainsi les échanges plus rapides et efficaces.
+
+
+
+
