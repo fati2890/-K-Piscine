@@ -21,7 +21,6 @@ CREATE TABLE MEMBER (
     person_id INT NOT NULL,
     membership_date DATE NOT NULL,
     membership_type ENUM('STANDARD', 'PREMIUM', 'STUDENT') DEFAULT 'STANDARD',
-    fine_amount DECIMAL(10,2) DEFAULT 0.00,
     status ENUM('ACTIVE', 'SUSPENDED', 'EXPIRED') DEFAULT 'ACTIVE',
     FOREIGN KEY (person_id) REFERENCES PERSON(person_id) ON DELETE CASCADE
 );
@@ -32,7 +31,6 @@ CREATE TABLE LIBRARIAN (
     person_id INT NOT NULL,
     hire_date DATE NOT NULL,
     department VARCHAR(50),
-    salary DECIMAL(10,2),
     status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
     FOREIGN KEY (person_id) REFERENCES PERSON(person_id) ON DELETE CASCADE
 );
@@ -47,7 +45,7 @@ CREATE TABLE ADMIN (
 );
 
 
-- Table: BOOK
+-- Table: BOOK
 CREATE TABLE BOOK (
     book_id VARCHAR(20) PRIMARY KEY,
     isbn VARCHAR(17) UNIQUE NOT NULL,
