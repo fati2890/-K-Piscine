@@ -1,35 +1,37 @@
 package org.example.service;
 
-import org.example.model.User;
-import org.example.model.UserRepo;
 import java.util.List;
 
+import org.example.model.UserRepo;
+import org.example.model.User;
+
+
 public class UserServiceImpl implements UserService {
-    private UserRepo userRepository;
+    private UserRepo UserRepo;
 
     // Injection via constructeur
-    public UserServiceImpl(UserRepo userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserRepo UserRepo) {
+        this.UserRepo = UserRepo;
     }
 
     @Override
     public void createUser(String name, String email) {
         User user = new User(null, name, email);
-        userRepository.save(user);
+        UserRepo.save(user);
     }
 
     @Override
     public User getUserById(Long id) {
-        return userRepository.findById(id);
+        return UserRepo.findById(id);
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userRepository.findAll();
+        return UserRepo.findAll();
     }
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.delete(id);
+        UserRepo.delete(id);
     }
 }

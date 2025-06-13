@@ -1,8 +1,6 @@
 package org.example.service;
-
-import org.example.model.User;
-
 import java.util.List;
+import org.example.model.User;
 
 
 public interface UserService {

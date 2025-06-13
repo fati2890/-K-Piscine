@@ -1,12 +1,13 @@
 package org.example.model;
 
-import org.example.model.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.stereotype.Repository;
 
-public class UserRepoImpl implements UserRepo{
+@Repository
+public class UserRepoImpl implements UserRepo {
     private Map<Long, User> users = new HashMap<>();
     private Long currentId = 1L;
 
