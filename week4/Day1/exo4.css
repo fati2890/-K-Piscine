@@ -1,0 +1,19 @@
+.container {
+      position: relative;
+}
+
+.target {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.target {
+  width: 100px;
+  height: 100px;
+  background-color: rebeccapurple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}

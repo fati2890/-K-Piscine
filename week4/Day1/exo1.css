@@ -1,0 +1,17 @@
+body {
+  font: 1.2em / 1.5 sans-serif;
+}
+.box span{
+  border: 5px solid black;
+  /*margin: 20px 1em 40px 2em;*/
+  padding: 1em;
+  background-color: pink;
+  display: inline-block;
+}
+
+.alternate {
+ border: 5px solid rebeccapurple;
+ background-color: lightgray;
+ width: 390px;
+}
+

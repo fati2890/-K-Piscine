@@ -1,0 +1,23 @@
+.box {
+  width: 100%;
+  overflow: auto; /* pour contenir les floats */
+}
+.float {
+  width: 100px;
+  height: 100px;
+  background-color: rebeccapurple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+.float1 {
+  /*float: left;*/
+}
+
+.float2 {
+  /*float: right;*/
+}
+
+ 

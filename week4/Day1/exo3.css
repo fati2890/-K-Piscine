@@ -1,0 +1,15 @@
+.float {
+}
+
+.below {
+}
+.float {
+  width: 100px;
+  height: 100px;
+  background-color: rebeccapurple;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
